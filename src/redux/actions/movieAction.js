@@ -1,20 +1,32 @@
 import api from "../api";
+import { movieActions } from "../reducers/movieReducer";
+
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 function getMovies() {
   return async (dispatch) => {
-    //반복되기때문에 생략시켜줌
-    // let url1 = `https://api.themoviedb.org/3/movie/popular?api_key=<<api_key>>&language=en-US&page=1`;
-    // let response1 = await fetch(url1);
-    // let data1 = await response1.json();
-    // let url2 = `https://api.themoviedb.org/3/movie/top_rated?api_key=<<api_key>>&language=en-US&page=1`;
-    // let response2 = await fetch(url2);
-    // let data2 = await response2.json();
-    // let url3 = `https://api.themoviedb.org/3/movie/upcoming?api_key=<<api_key>>&language=en-US&page=1`;
-    // let response3 = await fetch(url3);
-    // let data3 = await response3.json();
-
-    const popularMovieApi = await api.get(
-      `/movie/popular?api_key=<<api_key>>&language=en-US&page=1`
+    //await 3번 사용 => 끝나면 시작 끝나면 시작 끝나면 시작...
+    //=> 해결하기위한 방법으로 Promise.all() 사용(await 없앰) 데이터가 다 올때까지 한번만 기다림
+    const popularMovieApi = api.get(
+      `/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+    );
+    const topRatedApi = api.get(
+      `/movie/top_rated?api_key=${API_KEY}&language=en-US&page=1`
+    );
+    const upComingApi = api.get(
+      `/movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`
+    );
+    let [popularMovies, topRatedMovies, upComingMovies] = await Promise.all([
+      popularMovieApi,
+      topRatedApi,
+      upComingApi,
+    ]);
+    dispatch(
+      movieActions.getAllMovies({
+        popularMovies: popularMovies.data,
+        topRatedMovies: topRatedMovies.data,
+        upComingMovies: upComingMovies.data,
+      })
     );
   };
 }

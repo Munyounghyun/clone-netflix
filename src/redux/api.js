@@ -8,12 +8,10 @@ const api = axios.create({
 //request를 보내기전에 request 체크
 api.interceptors.request.use(
   function (config) {
-    console.log("request start", config);
     return config;
   },
   //에러있으면 print
   function (error) {
-    console.log("request error", error);
     return Promise.reject(error);
   }
 );
@@ -22,12 +20,10 @@ api.interceptors.request.use(
 //받을 response 데이터 확인가능
 api.interceptors.response.use(
   function (response) {
-    console.log("get response", response);
     return response;
   },
   //에러있으면 print
   function (error) {
-    console.log("response error", error);
     return Promise.reject(error);
   }
 );

@@ -3,3 +3,23 @@
   color: white;
   margin: 0 10px;
 }
+
+.banner{
+  padding:0 150px;
+  height:600px;
+  display: flex;
+  align-items: center;
+}
+.banner::before{
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 600px;
+  content: '';
+  background: linear-gradient(to right,black,transparent);
+}
+.banner_info{
+  color: white;
+  width: 40%;
+  z-index: 1;
+}
