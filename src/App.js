@@ -21,7 +21,7 @@ function App() {
   //12. 영화를 필터링 할 수 있다.
 
   return (
-    <div>
+    <div className="wrap">
       <Navigation />
       <Routes>
         <Route path="/" element={<Home />} />

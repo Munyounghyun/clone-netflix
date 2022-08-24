@@ -1,3 +1,8 @@
+.wrap{
+  background-color: black;
+  color: white;
+}
+
 .nav-item{
   text-decoration: none;
   color: white;
@@ -9,6 +14,7 @@
   height:600px;
   display: flex;
   align-items: center;
+  background-color: black;
 }
 .banner::before{
   position: absolute;
@@ -22,4 +28,16 @@
   color: white;
   width: 40%;
   z-index: 1;
+}
+
+
+
+/*card*/
+.card{
+  width:300px;
+  height:200px !important;
+}
+/*movies_wrap*/
+.movies_wrap{
+  padding: 0 50px;
 }
