@@ -1,8 +1,17 @@
+*{
+  margin: 0;
+  padding: 0;
+}
 .wrap{
   background-color: black;
   color: white;
 }
-
+.load{
+  display: flex;
+  height: 90vh;
+  justify-content: center;
+  align-items: center;
+}
 .nav-item{
   text-decoration: none;
   color: white;
@@ -30,14 +39,52 @@
   z-index: 1;
 }
 
-
-
 /*card*/
 .card{
+  border: 1px solid white;
+  margin: 0;
   width:300px;
   height:200px !important;
+  cursor: pointer;
 }
+/* .card:hover{
+  transform: scale(1.2);
+  transition: 0.3s;
+} */
 /*movies_wrap*/
 .movies_wrap{
-  padding: 0 50px;
+  padding:50px;
+}
+
+.overlay{
+  padding: 5px;
+  opacity: 0;
+  background: rgba(169, 153, 153, 0.9);
+  width: 100%;
+  height: 100%;
+}
+.overlay:hover{
+  opacity: 1;
+}
+.bagde{
+  margin-right:3px;
+}
+.movie_short_info{
+  display: flex;
+  flex-direction: column;
+}
+.movie_vote{
+  font-weight: bold;
+  color: rgb(255, 255, 0);
+}
+
+.over18{
+  font-weight: bold;
+  font-style: italic;
+  color: red;
+}
+.under18{
+  font-weight: bold;
+  font-style: italic;
+  color: blue;
 }

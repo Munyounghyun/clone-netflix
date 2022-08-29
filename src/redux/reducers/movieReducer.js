@@ -5,6 +5,7 @@ let initialState = {
   topRatedMovies: {},
   upComingMovies: {},
   loading: true,
+  genreList: [],
 };
 const movieSlice = createSlice({
   name: "movie",
@@ -15,6 +16,7 @@ const movieSlice = createSlice({
       state.topRatedMovies = action.payload.topRatedMovies;
       state.upComingMovies = action.payload.upComingMovies;
       state.loading = false;
+      state.genreList = action.payload.genreList;
     },
     getMovieRequest(state, action) {
       state.loading = true;
