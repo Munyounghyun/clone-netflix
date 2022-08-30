@@ -2,13 +2,19 @@ import React from "react";
 import Badge from "react-bootstrap/Badge";
 import { useSelector } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faCheckToSlot } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 const MovieCard = ({ item }) => {
+  const navigate = useNavigate();
   const { genreList } = useSelector((state) => state.movie);
-
+  const showMovieDetail = () => {
+    navigate(`/movies/${item?.id}`);
+  };
   return (
     <div
+      item={item}
       className="card"
+      onClick={showMovieDetail}
       style={{
         backgroundImage:
           "url(" +
@@ -26,6 +32,10 @@ const MovieCard = ({ item }) => {
           ))}
         </div>
         <div className="movie_short_info">
+          <span>
+            <FontAwesomeIcon icon={faCheckToSlot} />
+            &nbsp;{item.vote_count}
+          </span>
           <span className="movie_vote">
             <FontAwesomeIcon icon={faStar} />
             {item.vote_average}

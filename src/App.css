@@ -46,6 +46,7 @@
   width:300px;
   height:200px !important;
   cursor: pointer;
+  overflow: hidden;
 }
 /* .card:hover{
   transform: scale(1.2);
@@ -68,6 +69,8 @@
 }
 .bagde{
   margin-right:3px;
+  margin-top: 3px;
+  margin-bottom: 3px;
 }
 .movie_short_info{
   display: flex;
@@ -87,4 +90,10 @@
   font-weight: bold;
   font-style: italic;
   color: blue;
+}
+
+.movieDetail_wrap{
+  margin: 50px 0;
+  justify-content:center;
+  display: flex;
 }
