@@ -3,6 +3,7 @@
   padding: 0;
 }
 .wrap{
+  height: 100vh;
   background-color: black;
   color: white;
 }
@@ -55,6 +56,7 @@
 /*movies_wrap*/
 .movies_wrap{
   padding:50px;
+  background-color: black;
 }
 
 .overlay{
@@ -96,4 +98,24 @@
   margin: 50px 0;
   justify-content:center;
   display: flex;
+}
+
+.detail_right_wrap{
+  width: 450px;
+  padding: 0 0 0 50px;
+}
+
+.detail_badge{
+  margin-right: 5px;
+}
+.sub_detail{
+  margin: 20px 0;
+  display: flex;
+  justify-content: left;
+}
+
+.sub_detail div{
+  width: 25%;
+  display: flex;
+  justify-content: left;
 }

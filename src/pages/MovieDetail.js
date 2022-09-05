@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import { movieAction } from "../redux/actions/movieAction";
 import ClipLoader from "react-spinners/ClipLoader";
 import Badge from "react-bootstrap/Badge";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar, faCheckToSlot } from "@fortawesome/free-solid-svg-icons";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
@@ -40,19 +42,40 @@ const MovieDetail = () => {
   //     </div>
   //   );
   // }
-  console.log(detail?.genres.map((name) => detail?.genres.name));
+
   return (
     <div className="movieDetail_wrap">
       <img
+        width={"450px"}
+        height={"600px"}
         src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2${detail?.poster_path}`}
       />
-      <div>
-        {detail?.genres.map((name) => (
-          <Badge className="badge" bg="danger">
-            {detail?.genres.name}
+      <div className="detail_right_wrap">
+        {detail?.genres.map((id) => (
+          <Badge className="badge detail_badge" bg="danger">
+            {id.name}
           </Badge>
         ))}
         <h1>{detail?.title}</h1>
+        <div className="sub_detail">
+          <div>
+            <FontAwesomeIcon icon={faStar} />
+            <span>{detail?.vote_average}</span>
+          </div>
+          <div>
+            <FontAwesomeIcon icon={faCheckToSlot} />
+            <span>{detail?.popularity}</span>
+          </div>
+          <div>
+            <span>
+              {detail?.adult ? (
+                <span className="over18">청불</span>
+              ) : (
+                <span className="under18">Under 18</span>
+              )}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   );
