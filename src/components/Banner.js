@@ -1,8 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const Banner = ({ movie }) => {
+  const navigate = useNavigate();
+  const bannerDetail = () => {
+    navigate(`/movies/${movie?.id}`);
+  };
+
   return (
     <div
+      onClick={bannerDetail}
       className="banner"
       style={{
         backgroundImage:

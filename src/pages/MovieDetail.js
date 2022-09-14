@@ -5,14 +5,19 @@ import { movieAction } from "../redux/actions/movieAction";
 import ClipLoader from "react-spinners/ClipLoader";
 import Badge from "react-bootstrap/Badge";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar, faCheckToSlot } from "@fortawesome/free-solid-svg-icons";
+import {
+  faStar,
+  faCheckToSlot,
+  faFilm,
+} from "@fortawesome/free-solid-svg-icons";
+import Preview from "../components/Preview";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const MovieDetail = () => {
   let { id } = useParams();
   const [detail, setDetail] = useState();
-
+  const [modalShow, setModalShow] = useState(false);
   const getMovieDetail = async () => {
     let url = `https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=en-US`;
     let response = await fetch(url);
@@ -42,7 +47,6 @@ const MovieDetail = () => {
   //     </div>
   //   );
   // }
-
   return (
     <div className="movieDetail_wrap">
       <img
@@ -59,11 +63,11 @@ const MovieDetail = () => {
         <h1>{detail?.title}</h1>
         <div className="sub_detail">
           <div>
-            <FontAwesomeIcon icon={faStar} />
+            <FontAwesomeIcon icon={faStar} className="sub_icon" />
             <span>{detail?.vote_average}</span>
           </div>
           <div>
-            <FontAwesomeIcon icon={faCheckToSlot} />
+            <FontAwesomeIcon icon={faCheckToSlot} className="sub_icon" />
             <span>{detail?.popularity}</span>
           </div>
           <div>
@@ -75,6 +79,42 @@ const MovieDetail = () => {
               )}
             </span>
           </div>
+        </div>
+        <div className="overview">
+          <p>{detail?.overview}</p>
+        </div>
+        <div className="detail_under_wrap">
+          <div className="under_detail">
+            <Badge className="badge under_badge" bg="danger">
+              Budget
+            </Badge>
+            <p>${detail?.budget}</p>
+          </div>
+          <div className="under_detail">
+            <Badge className="badge under_badge" bg="danger">
+              Revenue
+            </Badge>
+            <p>${detail?.revenue}</p>
+          </div>
+          <div className="under_detail">
+            <Badge className="badge under_badge" bg="danger">
+              Release Day
+            </Badge>
+            <p>{detail?.release_date}</p>
+          </div>
+          <div className="under_detail">
+            <Badge className="badge under_badge" bg="danger">
+              Time
+            </Badge>
+            <p>{detail?.runtime}</p>
+          </div>
+        </div>
+        <div className="movie_preview">
+          <span onClick={() => setModalShow(true)}>
+            <FontAwesomeIcon icon={faFilm} />
+            &nbsp;Watch Trailer
+          </span>
+          <Preview show={modalShow} onHide={() => setModalShow(false)} />
         </div>
       </div>
     </div>

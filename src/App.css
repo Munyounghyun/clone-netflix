@@ -25,6 +25,7 @@
   display: flex;
   align-items: center;
   background-color: black;
+  
 }
 .banner::before{
   position: absolute;
@@ -33,6 +34,7 @@
   height: 600px;
   content: '';
   background: linear-gradient(to right,black,transparent);
+  cursor: pointer;
 }
 .banner_info{
   color: white;
@@ -118,4 +120,49 @@
   width: 25%;
   display: flex;
   justify-content: left;
+}
+.sub_icon{
+  margin: 3px 2px 0;
+}
+
+.overview{
+  padding: 30px 0;
+  border-top: 2px solid #ccc;
+  border-bottom: 2px solid #ccc;
+}
+
+.detail_under_wrap{
+  padding: 30px 0;
+  border-bottom: 2px solid #ccc;
+}
+.under_detail{
+  display: flex;
+  text-align: center;
+  margin: 10px 0;
+}
+.under_detail p{
+  margin: 0 0 0 10px;
+}
+.under_badge{
+
+  font-size: 16px !important;
+  font-weight: lighter;
+  width: 150px;
+  padding: 0;
+}
+.movie_preview{
+  padding: 30px 0;
+  color: rgb(239, 54, 54);
+}
+.movie_preview span{
+  cursor: pointer;
+}
+
+.movie_trailer{
+  background-color: black;
+}
+
+.trailer_body div{
+  display: flex;
+  justify-content: center;
 }
