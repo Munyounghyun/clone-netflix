@@ -12,12 +12,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Preview from "../components/Preview";
 import Review from "../components/Review";
+import Recommendataion from "../components/Recommendataion";
+import { Button } from "react-bootstrap";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 
 const MovieDetail = () => {
   let { id } = useParams();
   const [detail, setDetail] = useState();
+  const [show, setShow] = useState(true);
 
   const [modalShow, setModalShow] = useState(false);
   const getMovieDetail = async () => {
@@ -27,9 +30,15 @@ const MovieDetail = () => {
     setDetail(data);
     console.log(data);
   };
+  const showTrue = () => {
+    setShow(true);
+  };
+  const showFalse = () => {
+    setShow(false);
+  };
   useEffect(() => {
     getMovieDetail();
-  }, []);
+  }, [id]);
   // const dispatch = useDispatch();
   // const { popularMovies, topRatedMovies, upComingMovies, genreList, loading } =
   //   useSelector((state) => state.movie);
@@ -121,8 +130,16 @@ const MovieDetail = () => {
           </div>
         </div>
       </div>
-      <div>
-        <Review />
+      <div className="review_wrap">
+        <div className="review_recomment_btn">
+          <Button variant="outline-danger" onClick={() => showTrue()}>
+            Review
+          </Button>
+          <Button variant="outline-danger" onClick={() => showFalse()}>
+            Recommend
+          </Button>
+        </div>
+        {show ? <Review /> : <Recommendataion />}
       </div>
     </div>
   );
