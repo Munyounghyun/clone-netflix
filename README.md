@@ -26,4 +26,6 @@
   <img src="https://user-images.githubusercontent.com/90823418/221141891-67f751ce-6874-4e95-b665-80083f955427.png" />
 
   + 아직 검색 기능이나 나머지 페이지(Movies 페이지) 구현 못함... 추후 업데이트 예정
+  
+  네이버 블로그 : 구현과정 - https://blog.naver.com/fldh3369/222852742521
 
